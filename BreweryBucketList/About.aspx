@@ -2,6 +2,6 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
-    <h3>Your application description page.</h3>
-    <p>Use this area to provide additional information.</p>
+    <h3>Welcome to the Brewery Bucket List website.</h3>
+    <p>This application has been set up to serve as my Senior Research Project for E-town College.</p>
 </asp:Content>
