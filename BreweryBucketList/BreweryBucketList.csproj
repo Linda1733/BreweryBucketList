@@ -157,6 +157,7 @@
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
+    <Content Include="Breweries.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-original.css" />
     <Content Include="Content\bootstrap-original.min.css" />
@@ -327,6 +328,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BBLModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Breweries.aspx.cs">
+      <DependentUpon>Breweries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Breweries.aspx.designer.cs">
+      <DependentUpon>Breweries.aspx</DependentUpon>
     </Compile>
     <Compile Include="Brewery.cs">
       <DependentUpon>BBLModel.tt</DependentUpon>
