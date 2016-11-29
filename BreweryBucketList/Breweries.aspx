@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Breweries.aspx.cs" Inherits="BreweryBucketList.Breweries" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <%--<asp:GridView ID="grdCounties" runat="server"
+<%--    <asp:GridView ID="grdCounties" runat="server"
         ItemType="BreweryBucketList.Brewery" CssClass="table-bordered table-condensed" DataKeyNames="BreweryID"
         AutoGenerateColumns="false">
         <Columns>            
@@ -10,8 +10,13 @@
         </Columns>
     </asp:GridView>--%>
     <br />
-    <asp:GridView ID="GridView1" runat="server" CssClass="table-bordered table-condensed" AutoGenerateColumns="False" DataKeyNames="BreweryID" 
-        DataSourceID="SqlDataSource1">
+    <asp:DropDownList ID="ddlCounties" runat="server" DataSourceID="dsCounties" DataTextField="CountyName" DataValueField="CountyName">
+    </asp:DropDownList>
+    <asp:SqlDataSource ID="dsCounties" runat="server" ConnectionString="<%$ ConnectionStrings:BreweryBucketListConnectionString %>" SelectCommand="SELECT [CountyName] FROM [County]"></asp:SqlDataSource>
+    <br />
+    <br />
+    <asp:GridView ID="gvBreweries" runat="server" CssClass="table-bordered table-condensed" AutoGenerateColumns="False" 
+        DataSourceID="dsBreweries" >
         <Columns>
             <asp:BoundField DataField="BreweryName" HeaderText="BreweryName" SortExpression="BreweryName" />
             <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address" />
@@ -24,10 +29,12 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-    </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BreweryBucketListConnectionString %>" SelectCommand="SELECT Brewery.BreweryID, Brewery.BreweryName, Brewery.Address, Brewery.City, Brewery.State, Brewery.Zip, Brewery.Website, County.CountyName FROM Brewery INNER JOIN County ON Brewery.CountyID = County.CountyID"></asp:SqlDataSource>
-    <asp:EntityDataSource ID="EntityDataSource1" runat="server">
-    </asp:EntityDataSource>
-    <br />
 
+    </asp:GridView>
+    <asp:SqlDataSource ID="dsBreweries" runat="server" ConnectionString="<%$ ConnectionStrings:BreweryBucketListConnectionString %>" 
+        SelectCommand="SELECT Brewery.BreweryID, Brewery.BreweryName, Brewery.Address, Brewery.City, Brewery.State, Brewery.Zip, Brewery.Website, County.CountyName FROM Brewery INNER JOIN County ON Brewery.CountyID = County.CountyID"></asp:SqlDataSource>
+    
+    <br />
+    <br />
+    
 </asp:Content>
