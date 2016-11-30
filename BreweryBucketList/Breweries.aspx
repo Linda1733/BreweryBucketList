@@ -20,41 +20,30 @@
      <br />
     <br />
     
-    <asp:DataList ID="dlBreweries" runat="server" DataSourceID="dsBreweries" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" DataKeyField="BreweryID" RepeatColumns="4" RepeatDirection="Horizontal" >  
-        <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
-        <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+    <asp:DataList ID="dlBreweries" runat="server" DataSourceID="dsBreweries" CellPadding="10" Font-Bold="False" Font-Italic="False" Font-Names="Garamond" Font-Overline="False" Font-Size="Large" Font-Strikeout="False" Font-Underline="False" RepeatColumns="2" RepeatDirection="Horizontal" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" GridLines="Horizontal" CellSpacing="20" >  
+        <FooterStyle BackColor="White" ForeColor="#000066" />
+        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+        <ItemStyle ForeColor="#000066" />
         <ItemTemplate>
-            BreweryID:
-            <asp:Label ID="BreweryIDLabel" runat="server" Text='<%# Eval("BreweryID") %>' />
+            <%--<strong>Brewery Name:</strong>--%>
+            <strong><asp:Label ID="BreweryNameLabel" runat="server" Text='<%# Eval("BreweryName") %>' /></strong>
             <br />
-            BreweryName:
-            <asp:Label ID="BreweryNameLabel" runat="server" Text='<%# Eval("BreweryName") %>' />
-            <br />
-            Address:
+            <%--Address:--%>
             <asp:Label ID="AddressLabel" runat="server" Text='<%# Eval("Address") %>' />
             <br />
-            City:
+            <%--<strong>City:</strong>--%>
             <asp:Label ID="CityLabel" runat="server" Text='<%# Eval("City") %>' />
             <br />
-            State:
-            <asp:Label ID="StateLabel" runat="server" Text='<%# Eval("State") %>' />
-<br />
-            Zip:
-            <asp:Label ID="ZipLabel" runat="server" Text='<%# Eval("Zip") %>' />
-            <br />
-            CountyID:
-            <asp:Label ID="CountyIDLabel" runat="server" Text='<%# Eval("CountyID") %>' />
-            <br />
-            Website:
+            <strong>Website:</strong>
             <asp:Label ID="WebsiteLabel" runat="server" Text='<%# Eval("Website") %>' />
             <br />
             <br />
         </ItemTemplate>
-        <SelectedItemStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+        <SelectedItemStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
     </asp:DataList>
 
     
-    <asp:SqlDataSource ID="dsBreweries" runat="server" ConnectionString="<%$ ConnectionStrings:BreweryBucketListConnectionString %>" SelectCommand="SELECT * FROM [Brewery] WHERE ([CountyID] = @CountyID)">
+    <asp:SqlDataSource ID="dsBreweries" runat="server" ConnectionString="<%$ ConnectionStrings:BreweryBucketListConnectionString %>" SelectCommand="SELECT [BreweryName], [Address], [City], [Website] FROM [Brewery] WHERE ([CountyID] = @CountyID)">
         <FilterParameters>
             <asp:ControlParameter ControlID="ddlCounties" Name="CountyID" PropertyName="SelectedValue" Type="String"  />
         </FilterParameters>       
