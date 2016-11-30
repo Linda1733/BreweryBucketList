@@ -35,8 +35,9 @@
             <asp:Label ID="CityLabel" runat="server" Text='<%# Eval("City") %>' />
             <br />
             <strong>Website:</strong>
-            <asp:Label ID="WebsiteLabel" runat="server" Text='<%# Eval("Website") %>' />
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# Eval("Website") %>' Text='<%# Eval("BreweryName") %>' >Website Link</asp:HyperLink>
             <br />
+            <%--Text='<%# Eval("Website") %>'--%>
             <br />
         </ItemTemplate>
         <SelectedItemStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />

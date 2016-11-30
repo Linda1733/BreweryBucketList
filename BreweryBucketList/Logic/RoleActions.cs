@@ -41,7 +41,7 @@ namespace BreweryBucketList.Logic
             var userMgr = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             var appUser = new ApplicationUser()
             {
-                UserName = "Admin",
+                UserName = "Admin@test.com",
             };
 
             IdUserResult = userMgr.Create(appUser, "Pa$$word");
