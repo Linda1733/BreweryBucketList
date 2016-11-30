@@ -3,7 +3,6 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
     <div class="jumbotron">
-        <h1>Craft Brewery Bucket List</h1>
         <a runat="server" href="~/">
                 <asp:Image ID="Logo" runat="server" ImageUrl="~/Images/logo.jpg" Height=100% Width=100% BorderStyle="None" />
             </a>
