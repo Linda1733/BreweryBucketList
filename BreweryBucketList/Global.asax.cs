@@ -6,6 +6,9 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using System.Data.Entity;
+using BreweryBucketList.Models;
+using BreweryBucketList.Logic;
 
 namespace BreweryBucketList
 {
@@ -16,6 +19,10 @@ namespace BreweryBucketList
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // ADDED to create the Administrator and user roles 
+            RoleActions roleActions = new RoleActions();
+            roleActions.createAdmin();
         }
 
 
