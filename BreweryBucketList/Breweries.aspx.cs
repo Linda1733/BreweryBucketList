@@ -23,7 +23,6 @@ namespace BreweryBucketList
             //    grdCounties.DataBind();
             //}
         }
-
-    
+             
     }
 }
