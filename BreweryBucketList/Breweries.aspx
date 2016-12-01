@@ -22,7 +22,15 @@
     
     <asp:DataList ID="dlBreweries" runat="server" DataSourceID="dsBreweries" CellPadding="10" Font-Bold="False" Font-Italic="False" Font-Names="Garamond" Font-Overline="False" Font-Size="Large" Font-Strikeout="False" Font-Underline="False" RepeatColumns="2" RepeatDirection="Horizontal" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" GridLines="Horizontal" CellSpacing="20" >  
         <FooterStyle BackColor="White" ForeColor="#000066" />
+        <FooterTemplate>
+            <strong>
+            <br />
+            Brewery Bucket List</strong>
+        </FooterTemplate>
         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+        <HeaderTemplate>
+            List of Breweries<br />
+        </HeaderTemplate>
         <ItemStyle ForeColor="#000066" />
         <ItemTemplate>
             <%--<strong>Brewery Name:</strong>--%>
