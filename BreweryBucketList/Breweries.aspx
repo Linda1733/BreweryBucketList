@@ -19,7 +19,10 @@
     </asp:DropDownList>      
     <asp:SqlDataSource ID="dsCounties" runat="server" ConnectionString="<%$ ConnectionStrings:BreweryBucketListConnectionString %>" SelectCommand="SELECT [CountyID], [CountyName] FROM [County]"></asp:SqlDataSource>
      <br />
+    <asp:Label ID="lblResults" runat="server" BorderColor="#003366" BorderStyle="Solid" Text="Label"></asp:Label>
     <br />
+    
+    
     
     <asp:DataList ID="dlBreweries" runat="server" DataSourceID="dsBreweries" 
         Font-Bold="False" Font-Italic="False" Font-Names="Garamond" Font-Overline="False" Font-Size="Large" 
@@ -35,15 +38,24 @@
         </HeaderTemplate>
         <ItemStyle ForeColor="#000066" />
         <ItemTemplate>
-            <br />
+            <asp:CheckBoxList ID="cblBrewerySelection" runat="server" BorderColor="Gray" DataSourceID="dsBreweryUserPage" DataTextField="BreweryName" DataValueField="BreweryID" Height="16px" RepeatColumns="1" Width="100px">
+            </asp:CheckBoxList>
+            BreweryName:
             <asp:Label ID="BreweryNameLabel" runat="server" Text='<%# Eval("BreweryName") %>' />
             <br />
-            <asp:Label ID="AddressLabel" runat="server" Text='<%# Eval("Address") %>' />
+            <%--<asp:CheckBox ID="chkBreweryName" runat="server" />--%>
+            &nbsp;<asp:Label ID="AddressLabel" runat="server" Text='<%# Eval("Address") %>' />
             <br />
-            <asp:Label ID="CityLabel" runat="server" Text='<%# Eval("City") %>' /> <asp:Label ID="StateLabel" runat="server" Text='<%# Eval("State") %>' />
+            City:
+            <asp:Label ID="CityLabel" runat="server" Text='<%# Eval("City") %>' /> 
+            <br />
+            State: <asp:Label ID="StateLabel" runat="server" Text='<%# Eval("State") %>' />
+            <br />
+            Zip:
             <asp:Label ID="ZipLabel" runat="server" Text='<%# Eval("Zip") %>' />
             <br />
-            <asp:Hyperlink ID="hypWebsite" runat="server" NavigateUrl='<%# Eval("Website") %>'>Website Link</asp:Hyperlink>
+            Website:
+            <asp:Label ID="WebsiteLabel" runat="server" Text='<%# Eval("Website") %>' />
             <br />
             <br />
         </ItemTemplate>
@@ -51,7 +63,8 @@
     </asp:DataList>
 
     
-    <asp:SqlDataSource ID="dsBreweries" runat="server" ConnectionString="<%$ ConnectionStrings:BreweryBucketListConnectionString %>" SelectCommand="SELECT BreweryName, Address, City, State, Zip, Website FROM Brewery WHERE (CountyID = @CountyID)">
+    <asp:SqlDataSource ID="dsBreweries" runat="server" ConnectionString="<%$ ConnectionStrings:BreweryBucketListConnectionString %>" 
+        SelectCommand="SELECT BreweryName, Address, City, State, Zip, Website FROM Brewery WHERE (CountyID = @CountyID)">
         <FilterParameters>
             <asp:ControlParameter ControlID="ddlCounties" Name="CountyID" PropertyName="SelectedValue" Type="String"  />
         </FilterParameters>       
@@ -59,6 +72,20 @@
             <asp:ControlParameter ControlID="ddlCounties" Name="CountyID" PropertyName="SelectedValue" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
+
+    
+    <br />
+    <asp:Button ID="btnSubmit" runat="server" Text="Submit" Width="100px" OnClick="btnSubmit_Click1" />
+    <br />
+    <br />
+    
+    <asp:CheckBoxList ID="cblBrewerySelection" runat="server" DataSourceID="dsBreweryUserPage" DataTextField="BreweryName" DataValueField="BreweryID" 
+        CellPadding="50" CellSpacing="50" Height="16px" RepeatColumns="1" Width="100px" BorderColor="Gray">
+
+    </asp:CheckBoxList>
+    <asp:SqlDataSource ID="dsBreweryUserPage" runat="server" ConnectionString="<%$ ConnectionStrings:BreweryBucketListConnectionString %>" 
+        SelectCommand="SELECT Brewery.*, County.CountyName FROM Brewery INNER JOIN County ON Brewery.CountyID = County.CountyID"></asp:SqlDataSource>
+    <br />
 
     
     <br />
