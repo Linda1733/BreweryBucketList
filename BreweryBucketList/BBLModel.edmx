@@ -37,6 +37,16 @@
           <Property Name="State" Type="varchar" MaxLength="100" />
           <Property Name="Zip" Type="varchar" MaxLength="25" />
         </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="BreweryID" Type="int" Nullable="false" />
+          <Property Name="visited" Type="bit" />
+          <Property Name="comments" Type="varchar" MaxLength="250" />
+        </EntityType>
         <Association Name="FK_Brewery_County">
           <End Role="County" Type="Self.County" Multiplicity="1" />
           <End Role="Brewery" Type="Self.Brewery" Multiplicity="*" />
@@ -49,13 +59,46 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Order_Brewery">
+          <End Role="Brewery" Type="Self.Brewery" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Brewery">
+              <PropertyRef Name="BreweryID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BreweryBucketListModelStoreContainer">
           <EntitySet Name="Brewery" EntityType="Self.Brewery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="County" EntityType="Self.County" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Brewery_County" Association="Self.FK_Brewery_County">
             <End Role="County" EntitySet="County" />
             <End Role="Brewery" EntitySet="Brewery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Brewery" Association="Self.FK_Order_Brewery">
+            <End Role="Brewery" EntitySet="Brewery" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -75,6 +118,7 @@
           <Property Name="CountyID" Type="Int32" Nullable="false" />
           <Property Name="Website" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="County" Relationship="Self.FK_Brewery_County" FromRole="Brewery" ToRole="County" />
+          <NavigationProperty Name="Order" Relationship="BreweryBucketListModel.FK_Order_Brewery" FromRole="Brewery" ToRole="Order" />
         </EntityType>
         <EntityType Name="County">
           <Key>
@@ -95,6 +139,7 @@
           <Property Name="City" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Zip" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Orders" Relationship="BreweryBucketListModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
         </EntityType>
         <Association Name="FK_Brewery_County">
           <End Role="County" Type="Self.County" Multiplicity="1" />
@@ -116,7 +161,52 @@
             <End Role="County" EntitySet="Counties" />
             <End Role="Brewery" EntitySet="Breweries" />
           </AssociationSet>
+          <EntitySet Name="Orders" EntityType="BreweryBucketListModel.Order" />
+          <AssociationSet Name="FK_Order_Brewery" Association="BreweryBucketListModel.FK_Order_Brewery">
+            <End Role="Brewery" EntitySet="Breweries" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="BreweryBucketListModel.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="BreweryID" Type="Int32" Nullable="false" />
+          <Property Name="visited" Type="Boolean" />
+          <Property Name="comments" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Brewery" Relationship="BreweryBucketListModel.FK_Order_Brewery" FromRole="Order" ToRole="Brewery" />
+          <NavigationProperty Name="Customer" Relationship="BreweryBucketListModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+        </EntityType>
+        <Association Name="FK_Order_Brewery">
+          <End Type="BreweryBucketListModel.Brewery" Role="Brewery" Multiplicity="1" />
+          <End Type="BreweryBucketListModel.Order" Role="Order" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Brewery">
+              <PropertyRef Name="BreweryID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Type="BreweryBucketListModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="BreweryBucketListModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -155,6 +245,17 @@
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="Zip" ColumnName="Zip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="BreweryBucketListModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="visited" ColumnName="visited" />
+                <ScalarProperty Name="BreweryID" ColumnName="BreweryID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

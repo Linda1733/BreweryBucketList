@@ -9,6 +9,9 @@
         <EntityTypeShape EntityType="BreweryBucketListModel.County" Width="1.875" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BreweryBucketListModel.Customer" Width="2" PointX="6" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="BreweryBucketListModel.FK_Brewery_County" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BreweryBucketListModel.Order" Width="1.5" PointX="8.75" PointY="1.25" />
+        <AssociationConnector Association="BreweryBucketListModel.FK_Order_Brewery" />
+        <AssociationConnector Association="BreweryBucketListModel.FK_Order_Customer" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
