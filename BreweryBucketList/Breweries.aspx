@@ -18,9 +18,7 @@
                 <ItemTemplate>
                     <asp:CheckBox ID="chkVisited" runat="server" HeaderText="Visit"/>
                 </ItemTemplate>
-            </asp:TemplateField>
-
-            
+            </asp:TemplateField>            
         </Columns>
         <EditRowStyle BackColor="#999999" />
         <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -40,24 +38,25 @@
       </div>
     <div class="col-md-12">
         <h2>Search by County</h2>
-            <asp:Label ID="lblCounties" runat="server" Text="Label">Please Choose a County:</asp:Label>
-            <asp:DropDownList ID="ddlCounties" runat="server" DataSourceID="dsCounties" DataTextField="CountyName" 
-                DataValueField="CountyID" AutoPostBack="True" AppendDataBoundItems="True" >
-                <asp:ListItem Value="0">-Select County-</asp:ListItem>
-                </asp:DropDownList>      
+         <br />
+                    <asp:Label ID="lblCounties" runat="server" Text="Label">Please Choose a County:</asp:Label>
+                    <asp:DropDownList ID="ddlCounties" runat="server" DataSourceID="dsCounties" DataTextField="CountyName" 
+                        DataValueField="CountyID" AutoPostBack="True" AppendDataBoundItems="True" >
+                        <asp:ListItem Value="0">-Select County-</asp:ListItem>
+                        </asp:DropDownList>      
     
-                    <asp:SqlDataSource ID="dsCounties" runat="server" ConnectionString="<%$ ConnectionStrings:BreweryBucketListConnectionString %>"
-                        SelectCommand="SELECT [CountyID], [CountyName] FROM [County]"></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="dsCounties" runat="server" ConnectionString="<%$ ConnectionStrings:BreweryBucketListConnectionString %>"
+                                SelectCommand="SELECT [CountyID], [CountyName] FROM [County]"></asp:SqlDataSource>
 
-        <asp:SqlDataSource ID="dsBreweries" runat="server" ConnectionString="<%$ ConnectionStrings:BreweryBucketListConnectionString %>" 
-                        SelectCommand="SELECT BreweryName, Address, City, State, Zip, Website FROM Brewery WHERE (CountyID = @CountyID)">
-            <FilterParameters>
-                <asp:ControlParameter ControlID="ddlCounties" Name="CountyID" PropertyName="SelectedValue" Type="String"  />
-            </FilterParameters>       
-            <SelectParameters>
-                <asp:ControlParameter ControlID="ddlCounties" Name="CountyID" PropertyName="SelectedValue" />
-            </SelectParameters>
-        </asp:SqlDataSource>
+                <asp:SqlDataSource ID="dsBreweries" runat="server" ConnectionString="<%$ ConnectionStrings:BreweryBucketListConnectionString %>" 
+                                SelectCommand="SELECT BreweryName, Address, City, State, Zip, Website FROM Brewery WHERE (CountyID = @CountyID)">
+                    <FilterParameters>
+                        <asp:ControlParameter ControlID="ddlCounties" Name="CountyID" PropertyName="SelectedValue" Type="String"  />
+                    </FilterParameters>       
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="ddlCounties" Name="CountyID" PropertyName="SelectedValue" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
     
         <asp:GridView ID="grvBreweries" runat="server" DataSourceID="dsBreweries" CellPadding="20" ForeColor="#333333"
             GridLines="None" Width="60%" AllowPaging="True" AutoGenerateColumns="False" AllowSorting="True" >
@@ -92,19 +91,7 @@
         <br />
         <asp:Button ID="btnAddtoList" runat="server" Text="Add to List" Width="100px" OnClick="btnAddtoList_Click" />
         <br />
-        <br />
-        <%--<asp:GridView ID="grvSelected" runat="server" AutoGenerateColumns="false">
-            <Columns>
-                    <asp:BoundField DataField="BreweryName" HeaderText="Brewery Name" SortExpression="BreweryName" />
-                    <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" />
-                    <asp:TemplateField HeaderText="Website">
-                        <ItemTemplate>
-                            <asp:HyperLink ID="Website" runat="server" HeaderText="Website" Text="Link" 
-                                NavigateUrl='<%# Eval("Website") %>' Target="_blank" NullDisplayText="No Website" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-        </asp:GridView>--%>
+        <br />    
 
          <asp:GridView ID="grvSelected" runat="server" CellPadding="20" ForeColor="#333333"
             GridLines="None" Width="60%" AllowPaging="True" AutoGenerateColumns="False" AllowSorting="True" >

@@ -12,21 +12,15 @@ namespace BreweryBucketList
     using System;
     using System.Collections.Generic;
     
-    public partial class Customer
+    public partial class Order
     {
-        public Customer()
-        {
-            this.Orders = new HashSet<Order>();
-        }
-    
+        public int OrderID { get; set; }
         public int CustomerID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Zip { get; set; }
+        public int BreweryID { get; set; }
+        public Nullable<bool> visited { get; set; }
+        public string comments { get; set; }
     
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual Brewery Brewery { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }

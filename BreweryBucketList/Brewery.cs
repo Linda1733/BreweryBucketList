@@ -24,5 +24,6 @@ namespace BreweryBucketList
         public string Website { get; set; }
     
         public virtual County County { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

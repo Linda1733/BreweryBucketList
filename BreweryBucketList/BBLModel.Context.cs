@@ -28,5 +28,6 @@ namespace BreweryBucketList
         public virtual DbSet<Brewery> Breweries { get; set; }
         public virtual DbSet<County> Counties { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
     }
 }
