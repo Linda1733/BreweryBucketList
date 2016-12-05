@@ -5,7 +5,7 @@
     <br />
     <br />
 
-    <asp:ListView ID="lvBreweryOrder" runat="server" DataSourceID="dsBreweryOrder">
+    <asp:ListView ID="lvBreweryOrder" runat="server" DataSourceID="dsBreweryOrder" >
     <%--<ItemTemplate>
         <tr style="">
             <td>
@@ -102,10 +102,10 @@
             </tr>
         </ItemTemplate>
     <LayoutTemplate>
-        <table runat="server">
+        <table runat="server" >
             <tr runat="server">
                 <td runat="server">
-                    <table id="itemPlaceholderContainer" runat="server" border="0" style="">
+                    <table id="itemPlaceholderContainer" runat="server" border="0" style="width:800px" >
                         <tr runat="server" style="">
                             <th runat="server">BreweryName</th>
                             <th runat="server">CountyName</th>
