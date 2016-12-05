@@ -2,9 +2,9 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   
-      <h2><%: Title %>.</h2>
+      <h2><%: Title %></h2>
     
-    <h2>Contact Us</h2>
+    <h4>Contact Form</h4>
     <br />
     <table>
         <!-- Name -->

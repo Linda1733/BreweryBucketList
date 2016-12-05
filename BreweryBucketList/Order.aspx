@@ -4,6 +4,7 @@
     <br />
     <br />
     <br />
+    <h2>Order</h2>
 
     <asp:ListView ID="lvBreweryOrder" runat="server" DataSourceID="dsBreweryOrder" >
     <%--<ItemTemplate>
