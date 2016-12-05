@@ -13,6 +13,42 @@ namespace BreweryBucketList {
     public partial class Breweries {
         
         /// <summary>
+        /// lblSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSearch;
+        
+        /// <summary>
+        /// txtBrewerySearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBrewerySearch;
+        
+        /// <summary>
+        /// btnSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearch;
+        
+        /// <summary>
+        /// grvSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grvSearch;
+        
+        /// <summary>
         /// lblCounties control.
         /// </summary>
         /// <remarks>
@@ -40,24 +76,6 @@ namespace BreweryBucketList {
         protected global::System.Web.UI.WebControls.SqlDataSource dsCounties;
         
         /// <summary>
-        /// lblResults control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResults;
-        
-        /// <summary>
-        /// dlBreweries control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dlBreweries;
-        
-        /// <summary>
         /// dsBreweries control.
         /// </summary>
         /// <remarks>
@@ -67,30 +85,21 @@ namespace BreweryBucketList {
         protected global::System.Web.UI.WebControls.SqlDataSource dsBreweries;
         
         /// <summary>
-        /// btnSubmit control.
+        /// grvBreweries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        protected global::System.Web.UI.WebControls.GridView grvBreweries;
         
         /// <summary>
-        /// cblBrewerySelection control.
+        /// btnAddtoList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList cblBrewerySelection;
-        
-        /// <summary>
-        /// dsBreweryUserPage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsBreweryUserPage;
+        protected global::System.Web.UI.WebControls.Button btnAddtoList;
     }
 }

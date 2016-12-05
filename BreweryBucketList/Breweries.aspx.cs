@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BreweryBucketList;
 using System.Data.Entity;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
 
 namespace BreweryBucketList
 {
@@ -13,9 +16,13 @@ namespace BreweryBucketList
     {
         BBListDbContext context = new BBListDbContext();
 
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BreweryBucketListConnectionString"].ConnectionString);
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack) { dlBreweries.DataBind();  }
+            
+            //if (!Page.IsPostBack) { dlBreweries.DataBind();  }
             
             //using (var entity = new BBListDbContext())
             //{
@@ -24,30 +31,39 @@ namespace BreweryBucketList
             //    grdCounties.DataSource = first;
             //    grdCounties.DataBind();
             //}
-        }      
-
-
-        private void GetMultipleSelections(ListControl listControl)
-        {
-            foreach (ListItem li in cblBrewerySelection.Items)
-            {
-                if (li.Selected)
-                {
-                    Response.Write("Text = " + li.Text + ", Value = " + li.Value +
-                        ", Index = " + listControl.Items.IndexOf(li).ToString() + "<br/>");
-                }
-            }
         }
 
-        protected void btnSubmit_Click(object sender, EventArgs e)
+        protected void btnSearch_Click(object sender, EventArgs e)
         {
-            GetMultipleSelections(cblBrewerySelection);
+            string find = "select BreweryName as 'Name', Address, City from Brewery where(BreweryName like '%' + @BreweryName + '%')";
+            SqlCommand comm = new SqlCommand(find, con);
+            comm.Parameters.Add("@BreweryName", SqlDbType.NVarChar).Value = txtBrewerySearch.Text;
+
+            con.Open();
+            comm.ExecuteNonQuery();
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = comm;
+            DataSet ds = new DataSet();
+            da.Fill(ds, "BreweryName");
+            grvSearch.DataSource = ds;
+            grvSearch.DataBind();
+            con.Close();
         }
 
-        protected void btnSubmit_Click1(object sender, EventArgs e)
-        {
-            GetMultipleSelections(cblBrewerySelection);
-        }
-        
+     
+
+
+        //private void GetMultipleSelections(ListControl listControl)
+        //{
+        //    foreach (ListItem li in cblBrewerySelection.Items)
+        //    {
+        //        if (li.Selected)
+        //        {
+        //           // txtResults.Text += ("Brewery Name: " + li.Text + Environment.NewLine);
+        //        }
+        //    }
+        //}
+
+
     }
-}
+}   
