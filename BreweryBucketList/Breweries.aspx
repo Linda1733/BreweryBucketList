@@ -90,7 +90,53 @@
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
         <br />
-        <asp:Button ID="btnAddtoList" runat="server" Text="Add to List" Width="100px" />
+        <asp:Button ID="btnAddtoList" runat="server" Text="Add to List" Width="100px" OnClick="btnAddtoList_Click" />
+        <br />
+        <br />
+        <%--<asp:GridView ID="grvSelected" runat="server" AutoGenerateColumns="false">
+            <Columns>
+                    <asp:BoundField DataField="BreweryName" HeaderText="Brewery Name" SortExpression="BreweryName" />
+                    <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" />
+                    <asp:TemplateField HeaderText="Website">
+                        <ItemTemplate>
+                            <asp:HyperLink ID="Website" runat="server" HeaderText="Website" Text="Link" 
+                                NavigateUrl='<%# Eval("Website") %>' Target="_blank" NullDisplayText="No Website" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+        </asp:GridView>--%>
+
+         <asp:GridView ID="grvSelected" runat="server" CellPadding="20" ForeColor="#333333"
+            GridLines="None" Width="60%" AllowPaging="True" AutoGenerateColumns="False" AllowSorting="True" >
+                <AlternatingRowStyle BackColor="White" ForeColor="#284775"  />
+                <Columns>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:CheckBox ID="chkVisited" runat="server" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CheckBoxField HeaderText="Visit" SortExpression="Visit" />
+                    <asp:BoundField DataField="BreweryName" HeaderText="Brewery Name" SortExpression="BreweryName" />
+                    <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" />
+                    <asp:TemplateField HeaderText="Website">
+                        <ItemTemplate>
+                            <asp:HyperLink ID="Website" runat="server" HeaderText="Website" Text="Link" 
+                                NavigateUrl='<%# Eval("Website") %>' Target="_blank" NullDisplayText="No Website" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+                <EditRowStyle BackColor="#999999" />
+                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+            </asp:GridView>
+        <br />
         <br />
         </div>       
     </div>

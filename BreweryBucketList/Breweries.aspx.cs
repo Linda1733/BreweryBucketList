@@ -50,6 +50,30 @@ namespace BreweryBucketList
             con.Close();
         }
 
+        protected void btnAddtoList_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[4] { new DataColumn("Visit"), new DataColumn("BreweryName"), new DataColumn("City"), new DataColumn("Website") });
+            
+            foreach (GridViewRow row in grvBreweries.Rows)
+            {
+                if(row.RowType == DataControlRowType.DataRow)
+                {
+                    CheckBox chkRow = (row.Cells[0].FindControl("chkVisited") as CheckBox);
+                    if(chkRow.Checked)
+                    {
+                        string BreweryName = row.Cells[1].Text;
+                        string City = row.Cells[2].Text;
+                        string Website = row.Cells[3].Text;
+                        dt.Rows.Add(BreweryName, City, Website);
+                    }
+                }
+            }
+
+            grvSelected.DataSource = dt;
+            grvSelected.DataBind();
+        }
+
      
 
 
