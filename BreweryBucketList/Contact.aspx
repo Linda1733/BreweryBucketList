@@ -14,6 +14,8 @@
                 <asp:TextBox ID="txtSenderName"
                     runat="server"
                     Columns="50"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtSenderName" 
+                    ErrorMessage="Name is required" CssClass="warning">*</asp:RequiredFieldValidator>
             </td>
         </tr>
           <!-- Sender's email message-->
@@ -23,6 +25,8 @@
                 <asp:TextBox ID="txtSenderEmail"
                     runat="server"
                     Columns="50"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtSenderEmail" 
+                    ErrorMessage="Valid email is required" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" CssClass="warning">*</asp:RegularExpressionValidator>
             </td>
         </tr>
 
@@ -51,6 +55,8 @@
                     Columns="40"
                     Rows="6"
                     TextMode="MultiLine"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="rfvTextMessage" runat="server" ControlToValidate="txtMessage" 
+                    ErrorMessage="Message is required" CssClass="warning">*</asp:RequiredFieldValidator>
             </td>
         </tr>
 

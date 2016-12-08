@@ -56,15 +56,12 @@ namespace BreweryBucketList
 
             }
             catch (Exception ep)
-            {
-                
+            {                
                 lblResult.Text = "Your email message failed to send message!";
                 MsgBox(ep.Message);
             }
 
-            lblResult.Text = "";
-
-            
+            lblResult.Text = "";            
         }   
         
         public void MsgBox(string msg)
