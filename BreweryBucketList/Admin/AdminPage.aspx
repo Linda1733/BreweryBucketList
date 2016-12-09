@@ -10,16 +10,16 @@
     <h4>Please click on either the Edit or Delete button in order to change the contents of that cell.
         When you have finished, either choose "Update" or "Cancel" to save or discard your changes.</h4>
     <asp:GridView ID="grvBreweries" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="dsBreweriesAdmin" PageSize="5" 
-        OnSelectedIndexChanged="grvBreweries_SelectedIndexChanged" DataKeyNames="BreweryID" CellPadding="4" ForeColor="#333333" GridLines="None" Width="60%">
+        OnSelectedIndexChanged="grvBreweries_SelectedIndexChanged" DataKeyNames="BreweryID" CellPadding="4" ForeColor="#333333" GridLines="None" Width="85%">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ButtonType="Button" />
-            <asp:BoundField DataField="BreweryName" HeaderText="BreweryName" SortExpression="BreweryName" />
+            <asp:BoundField DataField="BreweryName" HeaderText="Brewery Name" SortExpression="BreweryName" />
             <asp:BoundField DataField="Address" HeaderText="Address" SortExpression="Address" />
             <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" />
             <asp:BoundField DataField="State" HeaderText="State" SortExpression="State" />
             <asp:BoundField DataField="Zip" HeaderText="Zip" SortExpression="Zip" />
-            <asp:BoundField DataField="CountyName" HeaderText="CountyName" SortExpression="CountyName" />
+            <asp:BoundField DataField="CountyName" HeaderText="County Name" SortExpression="CountyName" />
             <asp:BoundField DataField="Website" HeaderText="Website" SortExpression="Website" />
         </Columns>
         <EditRowStyle BackColor="#999999" />

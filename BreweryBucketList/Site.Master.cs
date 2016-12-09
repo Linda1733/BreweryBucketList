@@ -71,7 +71,7 @@ namespace BreweryBucketList
             if (HttpContext.Current.User.IsInRole("Administrator"))
             {
                 adminLink.Visible = true;
-                adminEditLink.Visible = true;
+                //adminEditLink.Visible = true;
             }
         }
 
