@@ -26,8 +26,6 @@ namespace BreweryBucketList
             client.Port = 587;
             client.Credentials = new System.Net.NetworkCredential("brewerybucketlist@gmail.com", "BreweryBucketList1");
             client.EnableSsl = true;
-            client.Send(mail);
-            
             
             try
             {
