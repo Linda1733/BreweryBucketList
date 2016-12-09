@@ -43,12 +43,13 @@ namespace BreweryBucketList
             oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
             
             oServer.User = "brewerybucketlist@gmail.com";
-            oServer.Password = "CraftBeer19";
+            oServer.Password = "BreweryBucketList1";
 
             try
             {
                 oSmtp.SendMail(oServer, oMail);
-                lblResult.Text = "Your email was sent successfully.";
+                string message = "Your email was sent successfully.";
+                MsgBox(message);
                 txtSenderName.Text = "";
                 txtMessage.Text = "";
                 txtSenderEmail.Text = "";
@@ -61,7 +62,7 @@ namespace BreweryBucketList
                 MsgBox(ep.Message);
             }
 
-            lblResult.Text = "";            
+                    
         }   
         
         public void MsgBox(string msg)

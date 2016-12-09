@@ -72,7 +72,7 @@
         <!-- Results -->
         <tr>
             <td colspan="2">
-                <asp:Label ID="lblResult" runat="server"></asp:Label>
+                <asp:Label ID="lblResult" runat="server" Font-Names="Arial" Height="25px" Width="200px"></asp:Label>
             </td>
         </tr>
     </table>
