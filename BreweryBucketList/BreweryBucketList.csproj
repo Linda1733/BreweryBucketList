@@ -38,10 +38,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EASendMail45, Version=7.3.0.6, Culture=neutral, PublicKeyToken=88adb80ecd66540b, processorArchitecture=MSIL">
-      <HintPath>..\packages\EASendMail.7.3.0.6\lib\net45\EASendMail45.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -234,7 +230,6 @@
       <LastGenOutput>BBLModel.cs</LastGenOutput>
     </Content>
     <Content Include="Admin\Web.config" />
-    <None Include="Properties\PublishProfiles\BreweryBucketList %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\BreweryBucketList.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
