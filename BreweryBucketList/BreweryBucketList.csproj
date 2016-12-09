@@ -234,6 +234,7 @@
       <LastGenOutput>BBLModel.cs</LastGenOutput>
     </Content>
     <Content Include="Admin\Web.config" />
+    <None Include="Properties\PublishProfiles\BreweryBucketList.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
