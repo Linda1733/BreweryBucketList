@@ -21,7 +21,7 @@ namespace BreweryBucketList
         {
 
             //Create the msg object to be sent
-            SmtpMail oMail = new SmtpMail("TryIt");
+            SmtpMail oMail = new SmtpMail("");
             SmtpClient oSmtp = new SmtpClient();
 
             //Add your email address to the recipients
