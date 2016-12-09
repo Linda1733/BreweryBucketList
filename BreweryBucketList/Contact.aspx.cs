@@ -4,9 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-//using System.Net.Mail;
-//using System.Net;
-using EASendMail;
+using System.Net.Mail;
+using System.Net;
 
 namespace BreweryBucketList
 {
@@ -21,33 +20,18 @@ namespace BreweryBucketList
         {
 
             //Create the msg object to be sent
-            SmtpMail oMail = new SmtpMail("TryIt");
-            SmtpClient oSmtp = new SmtpClient();
-
-            //Add your email address to the recipients
-            oMail.From = txtSenderEmail.Text;
-
-            //Add your email address to the recipients
-            oMail.To = "brewerybucketlist@gmail.com";
             
-            // Set subject
-            oMail.Subject = ddlSubject.SelectedValue;
+            MailMessage mail = new MailMessage(txtSenderEmail.Text, "brewerybucketlist@gmail.com", ddlSubject.SelectedValue, txtMessage.Text);
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            client.Port = 587;
+            client.Credentials = new System.Net.NetworkCredential("brewerybucketlist@gmail.com", "BreweryBucketList1");
+            client.EnableSsl = true;
+            client.Send(mail);
             
-            // set email body 
-            oMail.TextBody = txtMessage.Text; 
-
-            SmtpServer oServer = new SmtpServer("smtp.gmail.com");
-
-            oServer.Port = 465;
-
-            oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
             
-            oServer.User = "brewerybucketlist@gmail.com";
-            oServer.Password = "BreweryBucketList1";
-
             try
             {
-                oSmtp.SendMail(oServer, oMail);
+                client.Send(mail);
                 string message = "Your email was sent successfully.";
                 MsgBox(message);
                 txtSenderName.Text = "";
